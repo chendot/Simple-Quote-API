@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="/js/jquery-3.6.0.min.js"></script>
+</head>
+  </head>
+  <body>
+    <div style="color:#00FF00" id="count">
+      <h3>This is a header</h3>
+    <p th:text="'Hello, ' + ${name} + '!'" />
+    <p th:text="${type}"/>
+    <p th:text="${value}"/>
+    <p th:text="${count}"/>
+  </div>
+    
+  <script>
+       setInterval(function() {$("#count").load(location.href+" #count>*","");}, 2000);
+  </script>
+  </body>
+</html>
