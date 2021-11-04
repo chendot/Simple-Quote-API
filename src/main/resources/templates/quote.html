@@ -4,6 +4,7 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/vue.global.prod.js"></script>
 </head>
   </head>
   <body>
@@ -14,9 +15,42 @@
     <p th:text="${value}"/>
     <p th:text="${count}"/>
   </div>
+
+  <div id="counter">
+    Counter: {{ counter }}
+  </div>
     
+  <div id="bind-attribute">
+    <span v-bind:title="message">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+  </div>
+
   <script>
-       setInterval(function() {$("#count").load(location.href+" #count>*","");}, 2000);
+    setInterval(function() {$("#count").load(location.href+" #count>*","");}, 2000);
+
+    const Counter = {
+      data() {
+        return {
+          counter: 0
+        }
+      },
+      mounted() {
+        setInterval(() => {
+          this.counter++
+        }, 1000)
+      }
+    }
+    const AttributeBinding = {
+      data() {
+        return {
+          message: 'You loaded this page on ' + new Date().toLocaleString()
+        }
+      }
+    }
+
+    Vue.createApp(AttributeBinding).mount('#bind-attribute')
+    Vue.createApp(Counter).mount('#counter')
   </script>
   </body>
 </html>
