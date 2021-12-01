@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "coinapi.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'coinapi.uri'"
+  },
+  {
+    "name": "coinapi.key",
+    "type": "java.lang.String",
+    "description": "A description for 'coinapi.key'"
+  }
+]}
