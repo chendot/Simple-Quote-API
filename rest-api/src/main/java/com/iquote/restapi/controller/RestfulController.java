@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController // RestController实现返回一个域对象（自动转换为JSON对象），而不是一个视图
 public class RestfulController {
 
     private static final String template = "Hello, %s!";

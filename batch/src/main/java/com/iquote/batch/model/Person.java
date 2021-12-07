@@ -2,6 +2,9 @@ package com.iquote.batch.model;
 
 import lombok.Data;
 
+/**
+ * 测试实体类
+ */
 @Data
 public class Person {
     private String lastName;

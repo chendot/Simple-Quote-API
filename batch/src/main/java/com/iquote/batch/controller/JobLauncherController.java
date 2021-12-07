@@ -1,34 +1,39 @@
 package com.iquote.batch.controller;
 
-import java.util.Date;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class JobLauncherController {
-    @Autowired
-    JobLauncher jobLauncher;
+    private static final Logger log = LoggerFactory.getLogger(JobLauncherController.class);
 
     @Autowired
-    Job job;
+    private JobLauncher jobLauncher;
 
-    @PostMapping("/joblauncher")
+    @Autowired
+    private Job job;
+
+    @GetMapping("/joblauncher")
     public String handle() throws Exception {
+        log.info(job.getName().toString());
         jobLauncher.run(job, new JobParameters());
-        return "jobLauncher";
+        log.info("The job had beed submitted!");
+        return String.format("Job go!");
     }
 
-    @GetMapping("/")
-    public String test(Model model) {
-        model.addAttribute("test", "fdafadf");
-        model.addAttribute("today", new Date());
-        return "index";
-    }
+    // @GetMapping("/")
+    // public String test(@RequestParam String action, Model model) {
+    //     model.addAttribute("test", "fdafadf");
+    //     model.addAttribute("today", new Date());
+    //     if (action.equals("save")) {
+    //         log.info("aaaaaaa!");
+    //     }
+    //     return "index";
+    // }
 }

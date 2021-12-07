@@ -3,6 +3,8 @@
   <head lang="en">
     <meta charset="UTF-8" />
     <title>Spring batch</title>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/vue.global.prod.js"></script>
   </head>
   <body>
     <p th:text="${test}">Welcome to our grocery store!</p>
@@ -10,5 +12,6 @@
       今天是:
       <span th:text="${#dates.format(today,'dd/MMM/yyyy HH:mm')}">2018-04-25</span>
     </p>
+    <button type="submit" name="action" value="save">点我</button>
   </body>
 </html>
